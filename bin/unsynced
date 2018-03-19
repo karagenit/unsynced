@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 
-dir = '..'
+Dir.glob("./*").each do |dir|
+    if Dir.exist?(dir + "/.git")
+        unpushed = `git --git-dir=#{dir}/.git --work-tree=#{dir} log origin/master..HEAD --pretty=oneline | wc -l`.to_i
 
-unpushed = `git --git-dir=#{dir}/.git --work-tree=#{dir} log origin/master..HEAD --pretty=oneline | wc -l`.to_i
-
-puts "#{unpushed} in #{dir}"
+        puts "#{unpushed} in #{dir}" if unpushed > 0
+    end
+end
