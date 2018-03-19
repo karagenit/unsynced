@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-unpushed = `git log origin/master..HEAD --pretty=oneline | wc -l`.to_i
+dir = '..'
 
-puts "Unpushed: " + unpushed.to_s
+unpushed = `git --git-dir=#{dir}/.git --work-tree=#{dir} log origin/master..HEAD --pretty=oneline | wc -l`.to_i
+
+puts "#{unpushed} in #{dir}"
