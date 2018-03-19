@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+unpushed = `git log origin/master..HEAD --pretty=oneline | wc -l`.to_i
+
+puts "Unpushed: " + unpushed.to_s
