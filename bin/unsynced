@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-Dir.glob("./*").each do |dir|
+Dir.glob("./**/*").each do |dir|
     if Dir.exist?(dir + "/.git")
         unpushed = `git --git-dir=#{dir}/.git --work-tree=#{dir} log origin/master..HEAD --pretty=oneline | wc -l`.to_i
 
